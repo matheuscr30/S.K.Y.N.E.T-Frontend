@@ -1,0 +1,25 @@
+syntax = 'proto3';
+import "google/protobuf/timestamp.proto";
+package SKYNET_API;
+
+message AuthRequest {
+  string grant_type = 1;
+  string client_id = 2;
+  string client_secret = 3;
+  string username = 4;
+  string password = 5;
+  string refresh_token = 6;
+}
+
+message AuthResponse {
+  string access_token = 1;
+  int32 expires_in = 2;
+  string token_type = 3;
+  string scope = 4;
+  string refresh_token = 5;
+}
+
+message Error {
+  int32 status_code = 1;
+  string message = 2;
+}
