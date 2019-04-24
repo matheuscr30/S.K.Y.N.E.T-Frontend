@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-app>
-      <v-toolbar clipped-left dark fixed height="50" flat color="primary">
-        <v-icon>home</v-icon>
+      <v-toolbar dark fixed height="50" flat color="primary">
+        <v-icon>wb_incandescent</v-icon>
         <v-toolbar-title>S.K.Y.N.E.T</v-toolbar-title>
       </v-toolbar>
 
@@ -112,6 +112,11 @@ import Snackbar from '@/components/Helpers/Snackbar'
 
 export default {
   name: 'Landing',
+  head() {
+    return {
+      title: 'S.K.Y.N.E.T'
+    }
+  },
   components: {
     'app-snackbar': Snackbar
   },
@@ -165,7 +170,7 @@ export default {
           password: this.validation.models.password
         }
 
-        const res = await this.$store.dispatch('auth/requestToken', data)
+        const res = await this.$store.dispatch('auth/login', data)
         if (res) {
           this.activateSnackbar(res, true)
         } else {

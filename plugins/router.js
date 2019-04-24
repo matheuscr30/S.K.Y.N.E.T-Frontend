@@ -1,41 +1,24 @@
-// const routesWithoutProtection = ['index']
+const routesWithoutProtection = ['index']
 
 export default ({ app }) => {
   app.router.beforeEach((to, from, next) => {
-    next()
-    /* const accessToken = await app.$cookies.get('ACCESS_TOKEN')
+    const accessToken = app.$cookies.get('ACCESS_TOKEN')
 
-    if (
-      accessToken !== undefined &&
-      accessToken !== '' &&
-      !app.store.getters.isUserLogged
-    ) {
-      app.store.dispatch('setAccessToken', accessToken)
+    if (accessToken !== undefined && !app.store.getters.isUserLogged) {
+      app.store.dispatch('auth/setAccessToken', accessToken)
       app.store.dispatch(
-        'setRefreshToken',
-        await app.$cookies.get('REFRESH_TOKEN')
+        'auth/setRefreshToken',
+        app.$cookies.get('auth/REFRESH_TOKEN')
       )
-
-      const bytes = cryptoJS.AES.decrypt(
-        app.$cookies.get('USER_EMAIL'),
-        process.env.CLIENT_SECRET
-      )
-      const userEmail = bytes.toString(cryptoJS.enc.Utf8)
-
-      await app.store.dispatch('loadUser', userEmail)
+      app.store.dispatch('auth/setIsUserLogged', true)
     }
 
     if (accessToken === undefined) {
       if (routesWithoutProtection.indexOf(to.name) !== -1) return next()
-
-      await app.$cookies.set('REDIRECT_URL', to.fullPath, {
-        path: '/',
-        maxAge: app.store.getters.maxAgeCookie
-      })
       return next({ name: 'index' })
     } else {
       if (to.name === 'index') return next({ name: 'o-dashboard' })
       return next()
-    } */
+    }
   })
 }

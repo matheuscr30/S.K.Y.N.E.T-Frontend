@@ -38,6 +38,12 @@ export const mutations = {
   },
   SET_IS_USER_LOGGED(state, isUserLogged) {
     state.isUserLogged = isUserLogged
+  },
+  SET_ACCESS_TOKEN(state, accessToken) {
+    state.accessToken = accessToken
+  },
+  SET_REFRESH_TOKEN(state, refreshToken) {
+    state.refreshToken = refreshToken
   }
 }
 
@@ -48,7 +54,7 @@ export const actions = {
     commit('SET_IS_USER_LOGGED', false)
     this.$router.push({ name: 'index' })
   },
-  async requestToken({ commit, dispatch, state }, data) {
+  async login({ commit, dispatch, state }, data) {
     const authRequest = new API.AuthRequest()
 
     authRequest.setGrantType('password')
@@ -93,7 +99,17 @@ export const actions = {
       path: '/',
       maxAge: state.maxAgeCookie
     })
+    commit('SET_IS_USER_LOGGED', true)
 
     return null
+  },
+  setIsUserLogged({ commit }, isUserLogged) {
+    commit('SET_IS_USER_LOGGED', isUserLogged)
+  },
+  setAccessToken({ commit }, accessToken) {
+    commit('SET_ACCESS_TOKEN', accessToken)
+  },
+  setRefreshToken({ commit }, refreshToken) {
+    commit('SET_REFRESH_TOKEN', refreshToken)
   }
 }

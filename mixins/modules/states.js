@@ -18,7 +18,7 @@ export default {
       }
     },
     $isUserLogged() {
-      return this.$store.getters.isUserLogged
+      return this.$store.getters['auth/isUserLogged']
     }
   }
 }
