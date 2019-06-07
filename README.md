@@ -1,22 +1,10 @@
-# skynet_frontend
+# S.K.Y.N.E.T-Frontend (In progress)
 
-> My fabulous Nuxt.js project
+S.K.Y.N.E.T-Frontend is the frontend for a system that control the whole system of a smart house
 
-## Build Setup
+## Authors
 
-``` bash
-# install dependencies
-$ npm install
+* **Matheus Cunha Reis** - *creator* - [GitHub](https://github.com/matheuscr30) ✌
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
